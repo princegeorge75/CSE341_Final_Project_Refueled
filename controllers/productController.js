@@ -151,7 +151,21 @@ const addProduct = async (req, res) => {
             return res.status(400).json({ message: 'All fields are required.' });
         }
 
-        const product = new Product({ name, description, price, stock });
+        // Ensure price and stock are numbers
+        const parsedPrice = parseFloat(price);
+        const parsedStock = parseInt(stock, 10);
+
+        if (isNaN(parsedPrice) || isNaN(parsedStock)) {
+            return res.status(400).json({ message: 'Price and stock must be valid numbers.' });
+        }
+
+        const product = new Product({
+            name,
+            description,
+            price: parsedPrice,
+            stock: parsedStock,
+        });
+
         const result = await product.save();
         res.status(201).json(result);
     } catch (error) {
