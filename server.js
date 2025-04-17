@@ -20,10 +20,16 @@ app.use(express.urlencoded({ extended: true }));
 // Configure session middleware
 app.use(
     session({
-        secret: '850b7afa18111722fa47c61729658ff3b4751198',
+        secret: process.env.SESSION_SECRET,
         resave: false,
-        saveUninitialized: true,
-        store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }), // Persist sessions in MongoDB
+        saveUninitialized: false,
+        store: MongoStore.create({
+            mongoUrl: process.env.MONGODB_URI, // MongoDB connection string
+            collectionName: 'sessions', // Optional: specify the collection name
+        }),
+        cookie: {
+            maxAge: 1000 * 60 * 60 * 24, // 1 day
+        },
     })
 );
 
