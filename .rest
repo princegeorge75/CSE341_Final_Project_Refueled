@@ -33,11 +33,11 @@ Content-Type: application/json
 GET http://localhost:3000/customers
 
 ### Get request from mongodb
-GET https://cse341-e-commerce.onrender.com/products
+GET https://cse341-eko-store.onrender.com/products
 
 
 ### Post request from mongodb
-POST https://cse341-e-commerce.onrender.com/products HTTP/1.1
+POST https://cse341-eko-store.onrender.com/products HTTP/1.1
 Content-Type: application/json
 
 {
@@ -52,7 +52,7 @@ Content-Type: application/json
 
 
 ### Update request from mongodb
-PUT https://cse341-e-commerce.onrender.com/products/67d2422f42fd21fa89be2151
+PUT https://cse341-eko-store.onrender.com/products/67d2422f42fd21fa89be2151
 Content-Type: application/json
 
 {
@@ -66,16 +66,16 @@ Content-Type: application/json
 }
 
 ### Delete request from mongodb
-DELETE https://cse341-e-commerce.onrender.com/products/67e880d983d333d85cecb01b
+DELETE https://cse341-eko-store.onrender.com/products/67e880d983d333d85cecb01b
 
 
 
 
 ### Get request from mongodb
-GET https://cse341-e-commerce.onrender.com/customers
+GET https://cse341-eko-store.onrender.com/customers
 
 ### Post to customers database
-POST https://cse341-e-commerce.onrender.com/customers
+POST https://cse341-eko-store.onrender.com/customers
 Content-Type: application/json
 
 {
@@ -90,7 +90,7 @@ Content-Type: application/json
 
 
 ### Update request from mongodb
-PUT https://cse341-e-commerce.onrender.com/customers/
+PUT https://cse341-eko-store.onrender.com/customers/
 Content-Type: application/json
 
 {
@@ -104,7 +104,7 @@ Content-Type: application/json
 }
 
 ### Delete request from mongodb
-DELETE https://cse341-e-commerce.onrender.com/customers/
+DELETE https://cse341-eko-store.onrender.com/customers/
 
 
 
@@ -127,7 +127,7 @@ Content-Type: application/json
 
 
 ### Post on localserver 
-POST https://cse341-e-commerce.onrender.com/reviews
+POST https://cse341-eko-store.onrender.com/reviews
 Content-Type: application/json
 
 {
@@ -140,6 +140,6 @@ Content-Type: application/json
 
 
 ### Post on localserver 
-GET https://cse341-e-commerce.onrender.com/reviews/Table
+GET https://cse341-eko-store.onrender.com/reviews/Table
 Content-Type: application/json
 

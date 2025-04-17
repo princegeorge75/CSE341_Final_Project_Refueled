@@ -1,4 +1,4 @@
-// filepath: c:\Users\DELL\Documents\CSE341_E-Commerce\swaggerConfig.js
+
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
@@ -6,13 +6,13 @@ const options = {
     definition: {
         openapi: '3.0.0',
         info: {
-            title: 'E-Commerce API',
+            title: 'Eko-Store API',
             version: '1.0.0',
-            description: 'API documentation for the E-Commerce application',
+            description: 'API documentation for the Eko-Store application',
         },
         servers: [
             {
-                url: 'https://cse341-e-commerce.onrender.com',
+                url: 'https://cse341-eko-store.onrender.com',
             },
         ],
         components: {

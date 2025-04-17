@@ -1,7 +1,7 @@
 {
-  "name": "cse341_e-commerce",
+  "name": "cse341_eko-store",
   "version": "1.0.0",
-  "description": "e-commerce",
+  "description": "eko-store",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
