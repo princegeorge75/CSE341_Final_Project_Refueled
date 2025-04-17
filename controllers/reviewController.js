@@ -76,20 +76,16 @@ const reviewModel = require('../models/reviewModel');
 // Add a new review
 const addReview = async (req, res) => {
     try {
-        const { name, rating, comment } = req.body;
+        const { name, email, rating, comment } = req.body;
 
         // Validate input
-        if (!name || !rating || !comment) {
+        if (!name || !email || !rating || !comment) {
             return res.status(400).json({ message: 'All fields are required.' });
-        }
-
-        if (!req.user || !req.user.email) {
-            return res.status(401).json({ message: 'Unauthorized. User email is missing.' });
         }
 
         const review = {
             name, // Product name
-            email: req.user.email, // Use the authenticated user's email
+            email, // User email
             rating,
             comment,
             createdAt: new Date(),

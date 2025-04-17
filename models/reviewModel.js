@@ -1,5 +1,4 @@
 const mongodb = require('../data/database');
-const mongoose = require('mongoose');
 
 const getReviewCollection = () => {
     const db = mongodb.getDatabase();
@@ -19,17 +18,6 @@ const getReviewsByProductName = async (name) => {
     const collection = getReviewCollection();
     return await collection.find({ name: name.toLowerCase() }).toArray();
 };
-
-
-const reviewSchema = new mongoose.Schema({
-    name: { type: String, required: true }, // Product name
-    email: { type: String, required: true }, // User's email
-    rating: { type: Number, required: true, min: 1, max: 5 },
-    comment: { type: String, required: true },
-    createdAt: { type: Date, default: Date.now },
-});
-
-module.exports = mongoose.model('Review', reviewSchema);
 
 module.exports = {
     addReview,
