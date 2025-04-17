@@ -8,6 +8,8 @@ dotenv.config();
 const { swaggerUi, specs } = require('./swaggerConfig');
 const mongodb = require('./data/database');
 const axios = require('axios'); // Import Axios for making HTTP requests
+const MongoStore = require('connect-mongo'); // Import connect-mongo for session store
+const productRoutes = require('./routes/products'); // Import product routes
 
 const port = process.env.PORT || 3000;
 
@@ -21,6 +23,7 @@ app.use(
         secret: '850b7afa18111722fa47c61729658ff3b4751198',
         resave: false,
         saveUninitialized: true,
+        store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }), // Persist sessions in MongoDB
     })
 );
 
@@ -31,7 +34,7 @@ app.use(passport.session());
 // Swagger setup
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
-app.use('/products', require('./routes/products'));
+app.use('/products', productRoutes);
 app.use('/customers', require('./routes/customers'));
 app.use('/reviews', require('./routes/reviews'));
 
@@ -87,11 +90,11 @@ app.get('/logout', async (req, res, next) => {
     }
 });
 
-// Initialize the database
+// Initialize the database and start the server
 mongodb.initDb((err) => {
     if (err) {
-        console.error('Failed to initialize database', err);
-        process.exit(1);
+        console.error('Failed to initialize database:', err);
+        process.exit(1); // Exit the application if the database fails to initialize
     } else {
         console.log('Database initialized successfully');
         app.listen(port, () => {

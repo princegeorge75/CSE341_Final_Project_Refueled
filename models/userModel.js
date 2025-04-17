@@ -1,5 +1,6 @@
 const { ObjectId } = require('mongodb');
 const mongodb = require('../data/database');
+const mongoose = require('mongoose');
 
 const getUserCollection = () => {
     const db = mongodb.getDatabase();
@@ -25,6 +26,16 @@ const findUserById = async (id) => {
     const collection = getUserCollection();
     return await collection.findOne({ _id: new ObjectId(id) });
 };
+
+const userSchema = new mongoose.Schema({
+    githubId: { type: String, required: true, unique: true }, // GitHub OAuth ID
+    username: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    avatarUrl: { type: String }, // Optional GitHub avatar URL
+    createdAt: { type: Date, default: Date.now },
+});
+
+module.exports = mongoose.model('User', userSchema);
 
 module.exports = {
     createUser,
