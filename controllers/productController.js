@@ -155,8 +155,8 @@ const addProduct = async (req, res) => {
         const result = await product.save();
         res.status(201).json(result);
     } catch (error) {
-        console.error('Error adding product:', error);
-        res.status(500).json({ message: 'Failed to add product.', error });
+        console.error('Error adding product:', error); // Log the full error
+        res.status(500).json({ message: 'Failed to add product.', error: error.message || error });
     }
 };
 
