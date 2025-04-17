@@ -12,7 +12,7 @@ const options = {
         },
         servers: [
             {
-                url: 'https://cse341-eko-store.onrender.com',
+                url: 'https://cse341-final-project-refueled.onrender.com ',
             },
         ],
         components: {
